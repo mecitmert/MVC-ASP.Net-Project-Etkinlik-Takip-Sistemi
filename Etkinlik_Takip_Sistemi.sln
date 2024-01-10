@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.8.34330.188
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Etkinlik_Takip_Sistemi", "Etkinlik_Takip_Sistemi.csproj", "{CDFE2836-0555-40FE-98FA-B65C711553D9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Etkinlik_Takip_Sistemi.Tests", "..\Etkinlik_Takip_Sistemi.Tests\Etkinlik_Takip_Sistemi.Tests.csproj", "{1B048AF4-5596-4487-8425-77EF86A0B296}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{CDFE2836-0555-40FE-98FA-B65C711553D9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CDFE2836-0555-40FE-98FA-B65C711553D9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CDFE2836-0555-40FE-98FA-B65C711553D9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CDFE2836-0555-40FE-98FA-B65C711553D9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1B048AF4-5596-4487-8425-77EF86A0B296}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1B048AF4-5596-4487-8425-77EF86A0B296}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1B048AF4-5596-4487-8425-77EF86A0B296}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1B048AF4-5596-4487-8425-77EF86A0B296}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {69805846-9D40-4A33-9462-E495F840DD10}
+	EndGlobalSection
+EndGlobal

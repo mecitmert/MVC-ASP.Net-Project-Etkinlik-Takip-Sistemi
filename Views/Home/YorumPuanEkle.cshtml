@@ -1,0 +1,29 @@
+﻿@{
+    ViewBag.Title = "Yorum ve Puan Ekle";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Yorum ve Puan Ekle</h2>
+
+@using (Html.BeginForm("YorumPuanEkle", "Home"))
+{
+    @Html.AntiForgeryToken()
+
+    <!-- EtkinlikID'nin null olup olmadığını kontrol et -->
+  
+    
+        @Html.Hidden("etkinlikID", (int)ViewBag.EtkinlikID)
+    }
+
+    <div class="form-group">
+        <label for="yorum">Yorum:</label>
+        <textarea class="form-control" name="yorum" id="yorum" required></textarea>
+    </div>
+
+    <div class="form-group">
+        <label for="puan">Puan:</label>
+        <input type="number" class="form-control" name="puan" id="puan" min="1" max="5" required />
+    </div>
+
+    <button type="submit" class="btn btn-primary">Yorum Yap ve Puanla</button>
+}

@@ -1,0 +1,161 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="ActivityModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Etkinlikler">
+    <Key>
+      <PropertyRef Name="EtkinlikID" />
+    </Key>
+    <Property Name="EtkinlikID" Type="Int32" Nullable="false" />
+    <Property Name="Baslik" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="Tarih" Type="DateTime" Precision="0" />
+    <Property Name="Saat" Type="Time" Precision="7" />
+    <Property Name="Yer" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="KatilimciSayisi" Type="Int32" />
+    <NavigationProperty Name="Incelemelers" Relationship="Self.FK__Incelemel__Etkin__44FF419A" FromRole="Etkinlikler" ToRole="Incelemeler" />
+    <NavigationProperty Name="Katilimlars" Relationship="Self.FK__Katilimla__Etkin__3B75D760" FromRole="Etkinlikler" ToRole="Katilimlar" />
+    <NavigationProperty Name="EtkinlikTurleris" Relationship="Self.EtkinlikTuruIliskisi" FromRole="Etkinlikler" ToRole="EtkinlikTurleri" />
+    <NavigationProperty Name="Organizatorlers" Relationship="Self.OrganizatorEtkinlikIliskisi" FromRole="Etkinlikler" ToRole="Organizatorler" />
+  </EntityType>
+  <EntityType Name="EtkinlikTurleri">
+    <Key>
+      <PropertyRef Name="TurID" />
+    </Key>
+    <Property Name="TurID" Type="Int32" Nullable="false" />
+    <Property Name="TurAdi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Kategori" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Etkinliklers" Relationship="Self.EtkinlikTuruIliskisi" FromRole="EtkinlikTurleri" ToRole="Etkinlikler" />
+  </EntityType>
+  <EntityType Name="Incelemeler">
+    <Key>
+      <PropertyRef Name="IncelemeID" />
+    </Key>
+    <Property Name="IncelemeID" Type="Int32" Nullable="false" />
+    <Property Name="EtkinlikID" Type="Int32" />
+    <Property Name="KullaniciID" Type="Int32" />
+    <Property Name="Yorum" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Puan" Type="Int32" />
+    <NavigationProperty Name="Etkinlikler" Relationship="Self.FK__Incelemel__Etkin__44FF419A" FromRole="Incelemeler" ToRole="Etkinlikler" />
+    <NavigationProperty Name="Kullanicilar" Relationship="Self.FK__Incelemel__Kulla__45F365D3" FromRole="Incelemeler" ToRole="Kullanicilar" />
+  </EntityType>
+  <EntityType Name="Katilimlar">
+    <Key>
+      <PropertyRef Name="KatilimID" />
+    </Key>
+    <Property Name="KatilimID" Type="Int32" Nullable="false" />
+    <Property Name="EtkinlikID" Type="Int32" />
+    <Property Name="KullaniciID" Type="Int32" />
+    <Property Name="KatilimDurumu" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Etkinlikler" Relationship="Self.FK__Katilimla__Etkin__3B75D760" FromRole="Katilimlar" ToRole="Etkinlikler" />
+    <NavigationProperty Name="Kullanicilar" Relationship="Self.FK__Katilimla__Kulla__3C69FB99" FromRole="Katilimlar" ToRole="Kullanicilar" />
+  </EntityType>
+  <EntityType Name="Kullanicilar">
+    <Key>
+      <PropertyRef Name="KullaniciID" />
+    </Key>
+    <Property Name="KullaniciID" Type="Int32" Nullable="false" />
+    <Property Name="Ad" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Soyad" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Email" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Sifre" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Incelemelers" Relationship="Self.FK__Incelemel__Kulla__45F365D3" FromRole="Kullanicilar" ToRole="Incelemeler" />
+    <NavigationProperty Name="Katilimlars" Relationship="Self.FK__Katilimla__Kulla__3C69FB99" FromRole="Kullanicilar" ToRole="Katilimlar" />
+  </EntityType>
+  <EntityType Name="Organizatorler">
+    <Key>
+      <PropertyRef Name="OrganizatorID" />
+    </Key>
+    <Property Name="OrganizatorID" Type="Int32" Nullable="false" />
+    <Property Name="Ad" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Soyad" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Email" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Sifre" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Etkinliklers" Relationship="Self.OrganizatorEtkinlikIliskisi" FromRole="Organizatorler" ToRole="Etkinlikler" />
+  </EntityType>
+  <Association Name="FK__Incelemel__Etkin__44FF419A">
+    <End Role="Etkinlikler" Type="Self.Etkinlikler" Multiplicity="0..1" />
+    <End Role="Incelemeler" Type="Self.Incelemeler" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Etkinlikler">
+        <PropertyRef Name="EtkinlikID" />
+      </Principal>
+      <Dependent Role="Incelemeler">
+        <PropertyRef Name="EtkinlikID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Katilimla__Etkin__3B75D760">
+    <End Role="Etkinlikler" Type="Self.Etkinlikler" Multiplicity="0..1" />
+    <End Role="Katilimlar" Type="Self.Katilimlar" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Etkinlikler">
+        <PropertyRef Name="EtkinlikID" />
+      </Principal>
+      <Dependent Role="Katilimlar">
+        <PropertyRef Name="EtkinlikID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Incelemel__Kulla__45F365D3">
+    <End Role="Kullanicilar" Type="Self.Kullanicilar" Multiplicity="0..1" />
+    <End Role="Incelemeler" Type="Self.Incelemeler" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Kullanicilar">
+        <PropertyRef Name="KullaniciID" />
+      </Principal>
+      <Dependent Role="Incelemeler">
+        <PropertyRef Name="KullaniciID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Katilimla__Kulla__3C69FB99">
+    <End Role="Kullanicilar" Type="Self.Kullanicilar" Multiplicity="0..1" />
+    <End Role="Katilimlar" Type="Self.Katilimlar" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Kullanicilar">
+        <PropertyRef Name="KullaniciID" />
+      </Principal>
+      <Dependent Role="Katilimlar">
+        <PropertyRef Name="KullaniciID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="EtkinlikTuruIliskisi">
+    <End Role="Etkinlikler" Type="Self.Etkinlikler" Multiplicity="*" />
+    <End Role="EtkinlikTurleri" Type="Self.EtkinlikTurleri" Multiplicity="*" />
+  </Association>
+  <Association Name="OrganizatorEtkinlikIliskisi">
+    <End Role="Etkinlikler" Type="Self.Etkinlikler" Multiplicity="*" />
+    <End Role="Organizatorler" Type="Self.Organizatorler" Multiplicity="*" />
+  </Association>
+  <EntityContainer Name="ActivityEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Etkinliklers" EntityType="Self.Etkinlikler" />
+    <EntitySet Name="EtkinlikTurleris" EntityType="Self.EtkinlikTurleri" />
+    <EntitySet Name="Incelemelers" EntityType="Self.Incelemeler" />
+    <EntitySet Name="Katilimlars" EntityType="Self.Katilimlar" />
+    <EntitySet Name="Kullanicilars" EntityType="Self.Kullanicilar" />
+    <EntitySet Name="Organizatorlers" EntityType="Self.Organizatorler" />
+    <AssociationSet Name="FK__Incelemel__Etkin__44FF419A" Association="Self.FK__Incelemel__Etkin__44FF419A">
+      <End Role="Etkinlikler" EntitySet="Etkinliklers" />
+      <End Role="Incelemeler" EntitySet="Incelemelers" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Katilimla__Etkin__3B75D760" Association="Self.FK__Katilimla__Etkin__3B75D760">
+      <End Role="Etkinlikler" EntitySet="Etkinliklers" />
+      <End Role="Katilimlar" EntitySet="Katilimlars" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Incelemel__Kulla__45F365D3" Association="Self.FK__Incelemel__Kulla__45F365D3">
+      <End Role="Kullanicilar" EntitySet="Kullanicilars" />
+      <End Role="Incelemeler" EntitySet="Incelemelers" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Katilimla__Kulla__3C69FB99" Association="Self.FK__Katilimla__Kulla__3C69FB99">
+      <End Role="Kullanicilar" EntitySet="Kullanicilars" />
+      <End Role="Katilimlar" EntitySet="Katilimlars" />
+    </AssociationSet>
+    <AssociationSet Name="EtkinlikTuruIliskisi" Association="Self.EtkinlikTuruIliskisi">
+      <End Role="Etkinlikler" EntitySet="Etkinliklers" />
+      <End Role="EtkinlikTurleri" EntitySet="EtkinlikTurleris" />
+    </AssociationSet>
+    <AssociationSet Name="OrganizatorEtkinlikIliskisi" Association="Self.OrganizatorEtkinlikIliskisi">
+      <End Role="Etkinlikler" EntitySet="Etkinliklers" />
+      <End Role="Organizatorler" EntitySet="Organizatorlers" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

@@ -1,0 +1,61 @@
+﻿/* Tema.css */
+
+/* Genel Stiller */
+body {
+    font-family: 'Arial', sans-serif;
+}
+
+.container {
+    max-width: 960px;
+    margin: 0 auto;
+}
+
+.display-4 {
+    color: #007bff; /* Mavi */
+}
+
+.btn-primary {
+    background-color: #007bff; /* Mavi */
+    border-color: #007bff; /* Mavi */
+}
+
+    .btn-primary:hover {
+        background-color: #0056b3; /* Koyu Mavi */
+        border-color: #0056b3; /* Koyu Mavi */
+    }
+
+/* Başlık Stilleri */
+h2, h3 {
+    color: #343a40; /* Gri */
+}
+
+/* Metin Stilleri */
+p {
+    color: #6c757d; /* Gri */
+}
+
+/* Harita Entegrasyonu */
+#haritaTitle {
+    color: #28a745; /* Yeşil */
+}
+
+/* Organizatör Profili ve Bildirimler */
+#organizatorTitle, #bildirimTitle {
+    color: #17a2b8; /* Cyan */
+}
+
+/* Buton Stilleri */
+.btn-outline-dark {
+    color: #343a40; /* Gri */
+    border-color: #343a40; /* Gri */
+}
+
+    .btn-outline-dark:hover {
+        background-color: #343a40; /* Gri */
+        color: #fff; /* Beyaz */
+    }
+
+/* Hover Efektleri */
+.row:hover {
+    background-color: #f8f9fa; /* Beyaz Gri */
+}

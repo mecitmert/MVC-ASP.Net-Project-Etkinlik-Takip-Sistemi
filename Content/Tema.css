@@ -1,0 +1,125 @@
+﻿body {
+}
+/* Bootstrap'tan gelen stil özellikleri */
+@import url('path/to/bootstrap.css');
+
+/* Önerilen renk paleti */
+:root {
+    --primary-color: #3498db; /* Mavi tonları */
+    --secondary-color: #2ecc71; /* Yeşil */
+    --accent-color: #e67e22; /* Turuncu */
+    --background-color: #ecf0f1; /* Arka plan rengi */
+    --text-color: #34495e; /* Metin rengi */
+}
+
+/* Genel stil ayarları */
+body {
+    background-color: var(--background-color);
+    color: var(--text-color);
+}
+
+/* Başlık ve vurgulu metinler için renk tanımları */
+h1, h2, h3, h4, h5, h6 {
+    color: var(--primary-color);
+}
+
+/* Navbar ve linkler için renk tanımları */
+.navbar {
+    background-color: var(--primary-color);
+}
+
+.navbar-dark .navbar-nav .nav-link {
+    color: #fff;
+}
+
+/* Jumbotron içeriği için stil ayarları */
+.jumbotron h1, .jumbotron p {
+    color: var(--text-color);
+}
+
+/* Butonlar için renk tanımları */
+.btn-primary {
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+}
+
+.btn-secondary {
+    background-color: var(--secondary-color);
+    border-color: var(--secondary-color);
+}
+
+.btn-accent {
+    background-color: var(--accent-color);
+    border-color: var(--accent-color);
+    color: #fff;
+}
+
+/* Tablo için stil ayarları */
+.table {
+    background-color: #fff;
+}
+
+/* Gölgeli kutular için efekt */
+.shadow {
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+/* Tema.css */
+
+.etkinlik-detay {
+    background-color: #f8f9fa;
+    border: 1px solid #dee2e6;
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 20px;
+    
+}
+
+    .etkinlik-detay h2 {
+        color: red;
+    }
+
+    .etkinlik-detay p {
+        color: #343a40;
+    }
+
+    .etkinlik-detay button {
+        background-color: #f2cccc;
+        color: gray;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+    }
+
+    .etkinlik-detay button:hover {
+       background-color: #e67e22;
+    }
+
+.aciklama {
+    font-style: italic;
+    color: #555;
+}
+
+.tarih-ve-yer {
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+.diger-detaylar {
+    color: #888;
+}
+
+.katil-button {
+    background-color: #343a40;
+    color: white;
+    padding: 8px 16px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.katil-button:hover {
+    background-color: #77b06f;
+}

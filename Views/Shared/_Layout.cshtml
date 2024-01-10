@@ -1,0 +1,115 @@
+﻿<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - ASP.NET Uygulamam</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    <style>
+        body {
+            background-color: #f8f9fa; /* Change to your desired background color */
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center;
+            transition: background-image 1s ease-in-out;
+        }
+
+        /* Navbar background color */
+        .navbar-dark.bg-custom {
+            background-color: #3498db !important; /* Change to your desired color */
+        }
+
+        /* Navbar link color */
+        .navbar-dark .navbar-nav .nav-link {
+            color: #ffffff !important; /* Change to your desired color */
+        }
+
+            /* Navbar link hover color */
+            .navbar-dark .navbar-nav .nav-link:hover {
+                color: #ecf0f1 !important; /* Change to your desired hover color */
+            }
+
+        /* Navbar brand color */
+        .navbar-dark .navbar-brand {
+            color: #ffffff !important; /* Change to your desired color */
+        }
+
+            /* Navbar brand hover color */
+            .navbar-dark .navbar-brand:hover {
+                color: #ecf0f1 !important; /* Change to your desired hover color */
+            }
+
+        /* Additional styling for the container */
+        .container.body-content {
+            background-color: #ffffff; /* Change to your desired container background color */
+            border-radius: 10px; /* Optional: Add border radius for a rounded appearance */
+            padding: 20px; /* Optional: Add padding for better spacing */
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Optional: Add a subtle box shadow */
+        }
+
+        footer {
+            margin-top: 20px; /* Optional: Add margin to separate footer from the content */
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark bg-custom">
+        <div class="container">
+            @Html.ActionLink("Hosgeldiniz", "Hosgeldiniz", "Home", new { area = "" }, new { @class = "navbar-brand" })
+            <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" title="Gezintiyi aç/kapat" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse d-sm-inline-flex justify-content-between">
+                <ul class="navbar-nav flex-grow-1">
+                    <li>@Html.ActionLink("AnaSayfa", "Index", "Home", new { area = "" }, new { @class = "nav-link" })</li>
+
+                    <li>@Html.ActionLink("Etkinlik Listesi", "Etkinlik_List", "Home", new { area = "" }, new { @class = "nav-link" })</li>
+                    <li>@Html.ActionLink("Etkinlik", "Etkinlik", "Home", new { area = "" }, new { @class = "nav-link" })</li>
+                    <li>@Html.ActionLink("Organizatörler", "Organizatorler", "Home", new { area = "" }, new { @class = "nav-link organizator-link" })</li>
+
+                </ul>
+                @Html.Partial("_LoginPartial")
+            </div>
+        </div>
+    </nav>
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+        @Scripts.Render("~/bundles/jquery")
+        @Scripts.Render("~/bundles/bootstrap")
+        @RenderSection("scripts", required: false)
+        <footer>
+            <p>&copy; @DateTime.Now.Year - ASP.NET Uygulamam</p>
+        </footer>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            var images = [
+                "/Content/foto/1584435436.jpg",
+                "/Content/foto/43485-yasamak-mi-yoksa-olmek-mi-gala-yapacak-20230503-095928-kocaelibel_haberler_755x444.jpg",
+                "/Content/foto/Başlıksız.jpg",
+                "/Content/foto/Başlıksız1.jpg"
+            ];
+
+            var currentIndex = 0;
+
+            function changeBackground() {
+                $('body').css('background-image', 'url("' + images[currentIndex] + '")');
+                currentIndex = (currentIndex + 1) % images.length;
+            }
+
+            // Initial background change
+            changeBackground();
+
+            // Change background every 3000 milliseconds (3 seconds)
+            setInterval(changeBackground, 3000);
+        });
+    </script>
+</body>
+</html>

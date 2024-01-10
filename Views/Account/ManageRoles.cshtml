@@ -1,0 +1,39 @@
+﻿@model List<Etkinlik_Takip_Sistemi.Models.UserRolesViewModel>
+
+@{
+    ViewBag.Title = "Manage Roles";
+}
+
+<h2>@ViewBag.Title</h2>
+
+<table class="table">
+    <tr>
+        <th>Email</th>
+        <th>Roles</th>
+        <th>Actions</th>
+    </tr>
+    @foreach (var user in Model)
+    {
+        <tr>
+            <td>@user.Email</td>
+            <td>@string.Join(", ", user.Roles)</td>
+            <td>
+                @Html.DropDownList($"roles_{user.UserId}", new SelectList(user.Roles), new { @class = "form-control" })
+                @Html.Hidden($"userId_{user.UserId}", user.UserId)
+                <button type="submit" class="btn btn-primary" onclick="addRoleToUser('@user.UserId')">Add Role</button>
+            </td>
+        </tr>
+    }
+
+</table>
+
+@section Scripts {
+    <script>
+        function addRoleToUser(userId) {
+            var role = $("#roles").val();
+            $.post("/Account/AddRoleToUser", { userId: userId, roleName: role }, function () {
+                location.reload();
+            });
+        }
+    </script>
+}

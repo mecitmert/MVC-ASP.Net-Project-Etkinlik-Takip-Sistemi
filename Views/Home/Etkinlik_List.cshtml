@@ -1,0 +1,78 @@
+﻿<!-- Views/Home/Index.cshtml -->
+
+@model List<Etkinlik_Takip_Sistemi.Models.Etkinlikler>
+
+@{
+    ViewData["Title"] = "Etkinlik Listesi";
+}
+
+<h1>Etkinlik Listesi</h1>
+
+@* Sıralama seçenekleri için dropdown ekleyin *@
+<div>
+    <label for="sortBy">Sırala:</label>
+    <select id="sortBy" onchange="sortEtkinlikler()">
+        <option value="Baslik">Başlık</option>
+        <option value="Tarih">Tarih</option>
+        <option value="Yer">Yer</option>
+    </select>
+
+    <label for="sortOrder">Sıralama Türü:</label>
+    <select id="sortOrder" onchange="sortEtkinlikler()">
+        <option value="asc">Artan</option>
+        <option value="desc">Azalan</option>
+    </select>
+</div>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col" data-sort="Baslik">Başlık</th>
+            <th scope="col" data-sort="Tarih">Tarih</th>
+            <th scope="col" data-sort="Yer">Yer</th>
+            <th scope="col">İşlemler</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var etkinlik in Model)
+        {
+            <tr>
+                <td>@etkinlik.Baslik</td>
+                <td>@etkinlik.Tarih</td>
+                <td>@etkinlik.Yer</td>
+                <td><a href="@Url.Action("Etkinlik", "Home", new { id = etkinlik.EtkinlikID })">Detay</a></td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<script>
+    function sortEtkinlikler() {
+        var sortBy = document.getElementById("sortBy").value;
+        var sortOrder = document.getElementById("sortOrder").value;
+
+        // Sıralama işlemlerini gerçekleştir
+        var sortedEtkinlikler = @Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(Model));
+
+        sortedEtkinlikler.sort(function (a, b) {
+            var aValue = a[sortBy];
+            var bValue = b[sortBy];
+
+            if (sortOrder === "asc") {
+                return aValue.localeCompare(bValue);
+            } else {
+                return bValue.localeCompare(aValue);
+            }
+        });
+
+        // Şu anki tabloyu temizle
+        var tableBody = document.querySelector("table tbody");
+        tableBody.innerHTML = "";
+
+        // Sıralanmış etkinlikleri tabloya ekle
+        sortedEtkinlikler.forEach(function (etkinlik) {
+            var row = "<tr><td>" + etkinlik.Baslik + "</td><td>" + etkinlik.Tarih + "</td><td>" + etkinlik.Yer + "</td><td><a href='" + '@Url.Action("Etkinlik", "Home")' + "?id=" + etkinlik.EtkinlikID + "'>Detay</a></td></tr>";
+            tableBody.innerHTML += row;
+        });
+    }
+</script>

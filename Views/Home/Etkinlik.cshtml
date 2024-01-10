@@ -1,0 +1,147 @@
+﻿@{
+    ViewBag.Title = "Etkinlik Detayları";
+
+    // "Content" dizinindeki tüm CSS dosyalarını al
+    var cssDosyaları = Directory.GetFiles(Server.MapPath("~/Content"), "*.css")
+                             .Select(Path.GetFileName)
+                             .ToList();
+}
+
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Etkinlik Detayları</title>
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+
+    <!-- "Content" dizinindeki tüm CSS dosyalarını içeri al -->
+    @foreach (var cssDosyası in cssDosyaları)
+    {
+        <link rel="stylesheet" href="@Url.Content("~/Content/" + cssDosyası)">
+    }
+</head>
+<body>
+
+    <div class="container mt-5">
+        <h1 class="display-4">Etkinlik Detayları</h1>
+        <hr class="my-4" />
+
+        <div class="card etkinlik-detay mb-4">
+            <div class="card-body">
+                <h2 class="card-title">Etkinlik: Harika Konser</h2>
+                <p class="card-text">Bu muazzam konserde en sevdiğiniz sanatçıları izleyebilirsiniz. Kesinlikle kaçırmayın!</p>
+                <p class="card-text"><b>Tarih:</b> 15 Temmuz 2023, Saat: 20:00 - Yer: Harika Konser Salonu</p>
+                <p class="card-text diger-detaylar">Diğer detaylar ve özel bilgiler buraya eklenecek.</p>
+                @if (User.Identity.IsAuthenticated)
+                {
+                    <button class="btn btn-primary btn-lg" data-isjoined="false">Katıl</button>
+                }
+                else
+                {
+                    <button class="btn btn-primary btn-lg" disabled>Oturum Açmanız Gerekli</button>
+                }
+            </div>
+        </div>
+
+        <div class="card etkinlik-detay mb-4">
+            <div class="card-body">
+                <h2 class="card-title">Etkinlik: Sanat Sergisi</h2>
+                <p class="card-text">Yerel sanatçıların eserlerini incelemek için harika bir fırsat! Sergiyi ziyaret etmeyi unutmayın.</p>
+                <p class="card-text"><b>Tarih:</b> 22 Ekim 2023, Saat: 14:00 - Yer: Sanat Galerisi</p>
+                <p class="card-text diger-detaylar">Etkinlik süresince sanatçılarla buluşma şansı!</p>
+                @if (User.Identity.IsAuthenticated)
+                {
+                    <button class="btn btn-primary btn-lg" data-isjoined="false">Katıl</button>
+                }
+                else
+                {
+                    <button class="btn btn-primary btn-lg" disabled>Oturum Açmanız Gerekli</button>
+                }
+            </div>
+        </div>
+
+        <div class="card etkinlik-detay mb-4">
+            <div class="card-body">
+                <h2 class="card-title">Etkinlik: Spor Turnuvası</h2>
+                <p class="card-text">Yerel sporcular arasında düzenlenen rekabet dolu bir turnuva. Heyecanı kaçırmayın!</p>
+                <p class="card-text"><b>Tarih:</b> 5 Kasım 2023, Saat: 18:00 - Yer: Spor Kompleksi</p>
+                <p class="card-text diger-detaylar">Turnuva boyunca yiyecek ve içecek standları da bulunacak.</p>
+                @if (User.Identity.IsAuthenticated)
+                {
+                    <button class="btn btn-primary btn-lg" data-isjoined="false">Katıl</button>
+                }
+                else
+                {
+                    <button class="btn btn-primary btn-lg" disabled>Oturum Açmanız Gerekli</button>
+                }
+            </div>
+        </div>
+
+        <!-- Diğer etkinlik kartları buraya eklenebilir -->
+
+        <div class="card etkinlik-detay mb-4">
+            <div class="card-body">
+                <h2 class="card-title">Etkinlik: Yeni Etkinlik</h2>
+                <p class="card-text">Bu etkinlik hakkında açıklama buraya eklenecek.</p>
+                <p class="card-text"><b>Tarih:</b> 1 Ocak 2024, Saat: 15:30 - Yer: Yeni Mekan</p>
+                <p class="card-text diger-detaylar">Diğer detaylar ve özel bilgiler buraya eklenecek.</p>
+                @if (User.Identity.IsAuthenticated)
+                {
+                    <button class="btn btn-primary btn-lg" data-isjoined="false">Katıl</button>
+                }
+                else
+                {
+                    <button class="btn btn-primary btn-lg" disabled>Oturum Açmanız Gerekli</button>
+                }
+            </div>
+        </div>
+
+        <div class="card etkinlik-detay mb-4">
+            <div class="card-body">
+                <h2 class="card-title">Etkinlik: Başka Bir Etkinlik</h2>
+                <p class="card-text">Bu etkinlik hakkında açıklama buraya eklenecek.</p>
+                <p class="card-text"><b>Tarih:</b> 10 Şubat 2024, Saat: 19:45 - Yer: Farklı Mekan</p>
+                <p class="card-text diger-detaylar">Diğer detaylar ve özel bilgiler buraya eklenecek.</p>
+                @if (User.Identity.IsAuthenticated)
+                {
+                    <button class="btn btn-primary btn-lg" data-isjoined="false">Katıl</button>
+                }
+                else
+                {
+            <button class="btn btn-primary btn-lg" disabled>Katilabilmeniz İçin Oturum Açmanız Gerekli</button>
+                }
+            </div>
+        </div>
+
+    </div>
+
+    @if (User.Identity.IsAuthenticated)
+    {
+        <script>
+            $(document).ready(function () {
+                $(".btn-primary").click(function () {
+                    var isJoined = $(this).data("isjoined");
+
+                    if (isJoined === false) {
+                        // Display success message
+                        alert("E-Biletiniz başarıyla oluşturuldu! Lutfen Mailinizi Kontrol Ediniz İyi Eğlenceler.   :) ");
+
+                        // Disable the button to prevent multiple clicks
+                        $(this).data("isjoined", true);
+                        $(this).attr("disabled", true);
+                    } else {
+                        // Display warning message if the button is already disabled
+                        alert("Zaten bir biletiniz mevcut!");
+                    }
+                });
+            });
+        </script>
+    }
+</body>
+</html>

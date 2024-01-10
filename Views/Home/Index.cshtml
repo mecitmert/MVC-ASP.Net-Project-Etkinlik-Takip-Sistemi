@@ -1,0 +1,76 @@
+﻿@{
+    ViewBag.Title = "Ana Sayfa";
+}
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ana Sayfa</title>
+
+    <!-- Tema.css dosyasını bağlama -->
+    <link rel="stylesheet" href="path/to/Tema.css">
+</head>
+<body>
+    <!-- Sayfa içeriği buraya gelecek -->
+
+
+
+<div class="container mt-5">
+    <h1 class="display-4">Etkinlik Takip ve Kayıt Sistemi</h1>
+    <hr class="my-4" />
+ 
+    <section class="row" aria-labelledby="etkinlikTakipTitle">
+        <h2 id="etkinlikTakipTitle">Etkinlik Takip</h2>
+        <p class="lead">Farklı türlerdeki etkinlikleri takip edebilir, katılabilir ve değerlendirebilirsiniz.</p>
+        <p><a href="@Url.Action("Etkinlik_List", "Home")" class="btn btn-primary btn-md">Etkinlikleri Keşfet &raquo;</a></p>
+
+    </section>
+
+    <section class="row">
+        <div class="col-md-4" aria-labelledby="kayitTitle">
+            <h3 id="kayitTitle">Kayıt ve Katılım İşlemleri</h3>
+            <p>
+                Etkinliklere kaydolabilir ve katılım durumlarınızı takip edebilirsiniz.
+            </p>
+            <a href="@Url.Action("Register", "Account")" class="btn btn-primary">Kaydol</a>
+        </div>
+        <div class="col-md-4" aria-labelledby="tiplerTitle">
+            <h3 id="tiplerTitle">Etkinlik Tipleri ve Kategorileri</h3>
+            <p>
+                İlgi alanlarınıza uygun etkinlikleri filtreleyebilir ve farklı tiplerdeki etkinlikleri keşfedebilirsiniz.
+            </p>
+        </div>
+        <div class="col-md-4" aria-labelledby="incelemeTitle">
+            <h3 id="incelemeTitle">Etkinlik İnceleme ve Puanlama</h3>
+            <p>
+                Etkinliklere dair incelemeler yazabilir ve katıldığınız etkinlikleri puanlayabilirsiniz.
+            </p>
+            <a class="btn btn-primary" href="@Url.Action("Incele", "Home")">İncele</a>
+        </div>
+
+    </section>
+
+    
+
+    <section class="row mt-5" aria-labelledby="profilTitle">
+        <div class="col-md-6" aria-labelledby="organizatorTitle">
+            <h3 id="organizatorTitle">Organizatör Profili</h3>
+            <p>
+                Etkinlikleri düzenleyen organizatörlerin profillerini görüntüleyebilir ve düzenledikleri etkinlikleri takip edebilirsiniz.
+            </p>
+            <a href="@Url.Action("Organizatorler", "Home")" class="btn btn-primary">Organizatörler</a>
+        </div>
+
+        <div class="col-md-6" aria-labelledby="bildirimTitle">
+            <h3 id="bildirimTitle">Etkinlik Bildirimleri ve Hatırlatıcılar</h3>
+            <p>
+                Etkinlik hatırlatıcıları alabilir ve etkinliklerle ilgili güncellemeleri içeren bildirimlere erişebilirsiniz.
+            </p>
+        </div>
+    </section>
+</div>
+</body>
+</html>

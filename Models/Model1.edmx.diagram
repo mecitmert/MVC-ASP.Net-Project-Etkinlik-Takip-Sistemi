@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="0c17beca51be4561a5b1d845efc836b5" Name="Diagram1">
+        <EntityTypeShape EntityType="ActivityModel.Etkinlikler" Width="1.5" PointX="0.75" PointY="5.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="ActivityModel.EtkinlikTurleri" Width="1.5" PointX="3" PointY="4.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="ActivityModel.Incelemeler" Width="1.5" PointX="4.375" PointY="8.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="ActivityModel.Katilimlar" Width="1.5" PointX="6" PointY="5.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="ActivityModel.Kullanicilar" Width="1.5" PointX="3.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ActivityModel.Organizatorler" Width="1.5" PointX="3" PointY="13.125" IsExpanded="true" />
+        <AssociationConnector Association="ActivityModel.FK__Incelemel__Etkin__44FF419A" ManuallyRouted="false" />
+        <AssociationConnector Association="ActivityModel.FK__Katilimla__Etkin__3B75D760" ManuallyRouted="false" />
+        <AssociationConnector Association="ActivityModel.FK__Incelemel__Kulla__45F365D3" ManuallyRouted="false" />
+        <AssociationConnector Association="ActivityModel.FK__Katilimla__Kulla__3C69FB99" ManuallyRouted="false" />
+        <AssociationConnector Association="ActivityModel.EtkinlikTuruIliskisi" ManuallyRouted="false" />
+        <AssociationConnector Association="ActivityModel.OrganizatorEtkinlikIliskisi" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

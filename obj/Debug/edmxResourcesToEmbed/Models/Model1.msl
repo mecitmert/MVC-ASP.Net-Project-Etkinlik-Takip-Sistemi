@@ -1,0 +1,85 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="ActivityModelStoreContainer" CdmEntityContainer="ActivityEntities">
+    <EntitySetMapping Name="Etkinliklers">
+      <EntityTypeMapping TypeName="ActivityModel.Etkinlikler">
+        <MappingFragment StoreEntitySet="Etkinlikler">
+          <ScalarProperty Name="EtkinlikID" ColumnName="EtkinlikID" />
+          <ScalarProperty Name="Baslik" ColumnName="Baslik" />
+          <ScalarProperty Name="Tarih" ColumnName="Tarih" />
+          <ScalarProperty Name="Saat" ColumnName="Saat" />
+          <ScalarProperty Name="Yer" ColumnName="Yer" />
+          <ScalarProperty Name="KatilimciSayisi" ColumnName="KatilimciSayisi" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="EtkinlikTurleris">
+      <EntityTypeMapping TypeName="ActivityModel.EtkinlikTurleri">
+        <MappingFragment StoreEntitySet="EtkinlikTurleri">
+          <ScalarProperty Name="TurID" ColumnName="TurID" />
+          <ScalarProperty Name="TurAdi" ColumnName="TurAdi" />
+          <ScalarProperty Name="Kategori" ColumnName="Kategori" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Incelemelers">
+      <EntityTypeMapping TypeName="ActivityModel.Incelemeler">
+        <MappingFragment StoreEntitySet="Incelemeler">
+          <ScalarProperty Name="IncelemeID" ColumnName="IncelemeID" />
+          <ScalarProperty Name="EtkinlikID" ColumnName="EtkinlikID" />
+          <ScalarProperty Name="KullaniciID" ColumnName="KullaniciID" />
+          <ScalarProperty Name="Yorum" ColumnName="Yorum" />
+          <ScalarProperty Name="Puan" ColumnName="Puan" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Katilimlars">
+      <EntityTypeMapping TypeName="ActivityModel.Katilimlar">
+        <MappingFragment StoreEntitySet="Katilimlar">
+          <ScalarProperty Name="KatilimID" ColumnName="KatilimID" />
+          <ScalarProperty Name="EtkinlikID" ColumnName="EtkinlikID" />
+          <ScalarProperty Name="KullaniciID" ColumnName="KullaniciID" />
+          <ScalarProperty Name="KatilimDurumu" ColumnName="KatilimDurumu" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Kullanicilars">
+      <EntityTypeMapping TypeName="ActivityModel.Kullanicilar">
+        <MappingFragment StoreEntitySet="Kullanicilar">
+          <ScalarProperty Name="KullaniciID" ColumnName="KullaniciID" />
+          <ScalarProperty Name="Ad" ColumnName="Ad" />
+          <ScalarProperty Name="Soyad" ColumnName="Soyad" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Sifre" ColumnName="Sifre" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Organizatorlers">
+      <EntityTypeMapping TypeName="ActivityModel.Organizatorler">
+        <MappingFragment StoreEntitySet="Organizatorler">
+          <ScalarProperty Name="OrganizatorID" ColumnName="OrganizatorID" />
+          <ScalarProperty Name="Ad" ColumnName="Ad" />
+          <ScalarProperty Name="Soyad" ColumnName="Soyad" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Sifre" ColumnName="Sifre" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="EtkinlikTuruIliskisi" TypeName="ActivityModel.EtkinlikTuruIliskisi" StoreEntitySet="EtkinlikTuruIliskisi">
+      <EndProperty Name="Etkinlikler">
+        <ScalarProperty Name="EtkinlikID" ColumnName="EtkinlikID" />
+      </EndProperty>
+      <EndProperty Name="EtkinlikTurleri">
+        <ScalarProperty Name="TurID" ColumnName="TurID" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="OrganizatorEtkinlikIliskisi" TypeName="ActivityModel.OrganizatorEtkinlikIliskisi" StoreEntitySet="OrganizatorEtkinlikIliskisi">
+      <EndProperty Name="Etkinlikler">
+        <ScalarProperty Name="EtkinlikID" ColumnName="EtkinlikID" />
+      </EndProperty>
+      <EndProperty Name="Organizatorler">
+        <ScalarProperty Name="OrganizatorID" ColumnName="OrganizatorID" />
+      </EndProperty>
+    </AssociationSetMapping>
+  </EntityContainerMapping>
+</Mapping>
